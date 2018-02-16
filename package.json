@@ -4,7 +4,7 @@
   "description": "pair with Tony node stuff",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "node server.js"
   },
   "author": "lindsay",
@@ -17,6 +17,8 @@
   },
   "devDependencies": {
     "gulp": "^3.9.1",
-    "gulp-nodemon": "^2.2.1"
+    "gulp-nodemon": "^2.2.1",
+    "jest": "^22.3.0",
+    "supertest": "^3.0.0"
   }
 }
