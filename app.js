@@ -92,4 +92,8 @@ app.put('/products/:id', (req, res) => {
 
 });
 
+app.get('/js/info', (req, res) => {
+    res.send('Javascript is single threaded, dynamically typed language');
+});
+
 module.exports = app;
