@@ -1,11 +1,12 @@
 require('dotenv').config();
-let express = require('express');
-let app = express();
-let mongoose = require('mongoose');
-let bodyParser = require('body-parser');
-let productRouter = require('./')
-let jsinfo = require('./jsinfo/jsinfo')(app);
-let tfl = require('./tflConsume/tflConsumer')(app);
+const express = require('express');
+const app = express();
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const productRouter = require('./products/productRouter');
+const blogRouter = require('./blogPost/blogPostRouter');
+const BlogPost = require('./blogPost/blogPostModel');
+// let tfl = require('./tflConsume/tflConsumer')(app);
 
 
 mongoose.connect('mongodb://' + process.env.USERNAME + ':' + process.env.PASSWORD + '@' + process.env.DB_URL, (err) => { 
@@ -16,7 +17,10 @@ mongoose.connect('mongodb://' + process.env.USERNAME + ':' + process.env.PASSWOR
 // let port = process.env.PORT || 3000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended:true }));
-
 app.use('/products', productRouter);
+app.use('/blogs', blogRouter);
+app.get('/', (req, res) => {
+    res.send('Hello there, I\'m an API!');
+});
 
 module.exports = app;
