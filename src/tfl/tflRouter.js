@@ -7,6 +7,9 @@ tflRouter.route('/')
 tflRouter.route('/line/:id')
     .get(tflController.getLineInfoById);
 
+tflRouter.route('/airquality')
+    .get(tflController.airQuality);
+    
 tflRouter.route('/jupiter')
     .get(tflController.jupiter);
 

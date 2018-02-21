@@ -20,7 +20,16 @@ let getLineInfoById = function(req, res) {
         if(b.disruptions.length > 0) res.send(b.disruptions);
         res.send('No disruptions');
     })
-}
+};
+
+let airQuality = function(req, res) {
+    let url = 'https://api.tfl.gov.uk/AirQuality'
+    request(url, function(error, response, body){
+        if(error) console.log('error:' + error);
+        b = JSON.parse(response.body);
+        res.send(b);
+    });
+};
 
 let jupiter = function(req, res) {
     request('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY', function (error, response, body) {
@@ -33,5 +42,6 @@ let jupiter = function(req, res) {
 module.exports = {
     sayhello,
     getLineInfoById,
+    airQuality,
     jupiter
 }
