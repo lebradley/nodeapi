@@ -3,15 +3,25 @@ const Product = require('./productModel');
 
 let getAll = function(req, res) {
     Product.find((err, products) => {
-        if(err) console.log(err);
-        res.send(products);
+        if(err) {
+            console.log(err);
+            res.sendStatus(500);
+        }
+        else {
+            res.status(200).send(products);
+        }
     });
 };
 
 let getById = function(req, res) {
     Product.findById({ _id: req.params.id }, (err, _product) => {
-        if(err) console.log(err);
-        res.send(_product);
+        if(err) {
+            console.log(err);
+            res.sendStatus(500);
+        }
+        else {
+            res.status(200).send(_product);
+        }
     });
 };
 

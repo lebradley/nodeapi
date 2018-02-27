@@ -1,5 +1,6 @@
-let gulp = require('gulp');
-let nodemon = require('gulp-nodemon');
+const gulp = require('gulp');
+const nodemon = require('gulp-nodemon');
+const mocha = require('gulp-spawn-mocha');
 
 gulp.task('default', () => {
     nodemon({
@@ -13,3 +14,21 @@ gulp.task('default', () => {
         console.log('restarting server');
     });
 });
+
+gulp.task('unit-test', () => gulp
+    .src(['./test/**.test.js'])
+    .pipe(mocha({
+        reporter: 'mocha-multi',
+        reporterOptions: 'spec=-,xunit=./reports/unit/xunit.xml',
+        istanbul: {
+          dir: './reports/unit/',
+          report: 'html',
+          includeAllSources: true,
+          root: './src',
+          x: [
+            '**/config/config.js',
+            '**/routes/routes.js',
+          ],
+          print: 'detail',
+        },
+      })));

@@ -4,7 +4,6 @@ const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const productRouter = require('./products/productRouter');
-const blogRouter = require('./blogPost/blogPostRouter');
 const tflRouter = require('./tfl/tflRouter');
 
 mongoose.connect('mongodb://' + process.env.USERNAME + ':' + process.env.PASSWORD + '@' + process.env.DB_URL, (err) => { 
@@ -16,7 +15,6 @@ mongoose.connect('mongodb://' + process.env.USERNAME + ':' + process.env.PASSWOR
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended:true }));
 app.use('/products', productRouter);
-app.use('/blogs', blogRouter);
 app.use('/tfl', tflRouter);
 
 app.get('/', (req, res) => {

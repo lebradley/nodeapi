@@ -1,0 +1,5 @@
+<testsuite name="Mocha Tests" tests="1" failures="1" errors="1" skipped="0" timestamp="Thu, 22 Feb 2018 14:50:06 GMT" time="0.121">
+<testcase classname="unit tests of CRUD product controller" name="should call and fail find when given error" time="0"><failure>expected false to equal true
+AssertionError: expected false to equal true
+    at Timeout.setTimeout [as _onTimeout] (test/productController.test.js:67:56)</failure></testcase>
+</testsuite>
